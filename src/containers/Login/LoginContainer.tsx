@@ -1,14 +1,13 @@
-import {FunctionComponent} from 'react';
+import { FunctionComponent } from 'react';
 import LoginComponent from '../../components/Login/LoginComponent';
- import './LoginContianer.css'
+import './LoginContianer.css';
 
-
-const LoginContainer: FunctionComponent= () => {
-	return (
-		<div className='container'>
-			<LoginComponent />
-		</div>
-	)
+const LoginContainer: FunctionComponent = () => {
+  return (
+    <div className="container">
+      <LoginComponent />
+    </div>
+  );
 };
 
 export default LoginContainer;
