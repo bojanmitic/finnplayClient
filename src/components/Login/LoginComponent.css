@@ -1,0 +1,47 @@
+.login-form-container {
+	padding: 20px;
+}
+
+.input-field {
+	padding: 15px 15px 10px 15px;
+	min-width: 350px;
+	min-height: 60px;
+	border-radius: 5px;
+	background-color: white;
+	border: 1px solid #f2f2f2;
+}
+
+.input-field:focus {
+	outline: none;
+}
+
+.password-icon{
+	position: absolute;
+	right: 15px;
+	top: 65%;
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+
+.user-input-wrp {
+	position: relative;
+}
+
+.user-input-wrp .floating-label {
+	position: absolute;
+	pointer-events: none;
+	top: 40px;
+	left: 10px;
+	transition: 0.2s ease all;
+}
+.user-input-wrp input:focus ~ .floating-label,
+.user-input-wrp input:not(:focus):valid ~ .floating-label{
+	top: 20px;
+	left: 17px;
+	font-size: 13px;
+	opacity: 1;
+}
+
+.floating-label {
+	color: #808080;
+}
