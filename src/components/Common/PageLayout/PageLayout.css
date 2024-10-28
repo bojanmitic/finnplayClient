@@ -1,7 +1,9 @@
 .page-layout-lg {
+	display: flex;
 	padding: 50px;
 }
 
 .page-layout-sm {
+	display: flex;
 	padding: 20px;
 }

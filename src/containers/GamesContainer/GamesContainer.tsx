@@ -1,11 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useTypedSelector } from '../../app/store';
 import { actions as gamesActions, selectAllGames } from '../../ducks/gamesDuck';
 import snackBar from '../../utils/snackBar';
 import GamesComponent from '../../components/GamesComponent/GamesComponent';
 import PageLayout from '../../components/Common/PageLayout/PageLayout';
+import FiltersContainer from '../FiltersContainer/FiltersContaier';
+import './GamesContainer.css';
 
 const GamesContainer: React.FunctionComponent = () => {
+  const [searchValue, setSearchValue] = useState('');
   const dispatch = useAppDispatch();
   const games = useTypedSelector(selectAllGames);
 
@@ -24,7 +27,10 @@ const GamesContainer: React.FunctionComponent = () => {
 
   return (
     <PageLayout>
-      <GamesComponent games={games} />
+      <div className="games-container">
+        <GamesComponent games={games} />
+        <FiltersContainer searchValue={searchValue} setSearchValue={setSearchValue} />
+      </div>
     </PageLayout>
   );
 };
