@@ -1,4 +1,13 @@
+import { AppStore } from '../app/store';
+import { setUser } from '../slices/authSlice';
+
 const BASE_URL = '/api/v1/';
+
+let store: AppStore | undefined;
+
+export const injectStore = (_store: AppStore) => {
+  store = _store;
+};
 
 const apiFetch = async <T>(
   endpoint: string,
@@ -19,11 +28,19 @@ const apiFetch = async <T>(
 
   try {
     const res = await fetch(request, { credentials: 'include' });
+
+    if (!res.ok) {
+      if (res.status === 401) {
+        // if session expires remove user
+        localStorage.removeItem('user');
+        store && store.dispatch(setUser(null));
+      }
+    }
     return await res.json();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     if (error.message) {
-      throw new Error(error);
+      throw new Error(error as string);
     }
   }
 };
