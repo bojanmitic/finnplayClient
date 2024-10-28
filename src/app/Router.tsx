@@ -2,6 +2,7 @@
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
+import NotFound from '../containers/NotFound';
 
 const LoginContainer = lazy(() => import('../containers/Login/LoginContainer'));
 const GamesContainer = lazy(() => import('../containers/GamesContainer/GamesContainer'));
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         element: <GamesContainer />
       }
     ]
+  },
+  {
+    path: '*',
+    element: <NotFound />
   }
 ]);
 

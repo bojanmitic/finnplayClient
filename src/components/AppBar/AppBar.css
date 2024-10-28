@@ -1,0 +1,19 @@
+.app-bar {
+	display: flex;
+  align-items: center;
+  z-index: 1;
+  width: 100%;
+	position: sticky;
+  top: 0;
+  left: 0;
+	padding: 0.5rem 2.5rem;
+	justify-content: end;
+}
+
+.app-bar-button {
+	color: #EC4466;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 8px 12px;
+}
