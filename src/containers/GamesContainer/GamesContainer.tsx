@@ -1,17 +1,14 @@
 import { useEffect } from 'react';
-import Grid from '../../components/GridContainer/Grid';
 import { useAppDispatch, useTypedSelector } from '../../app/store';
 import { actions as gamesActions, selectAllGames } from '../../ducks/gamesDuck';
 import snackBar from '../../utils/snackBar';
-import GridItem from '../../components/GridItem/GridItem';
+import GamesComponent from '../../components/GamesComponent/GamesComponent';
+import PageLayout from '../../components/Common/PageLayout/PageLayout';
 
-interface IGamesContainerProps {
-  numberOfColumns?: number;
-}
-
-const GamesContainer: React.FunctionComponent<IGamesContainerProps> = ({ numberOfColumns }) => {
+const GamesContainer: React.FunctionComponent = () => {
   const dispatch = useAppDispatch();
   const games = useTypedSelector(selectAllGames);
+
   useEffect(() => {
     const getGames = async () => {
       try {
@@ -26,19 +23,9 @@ const GamesContainer: React.FunctionComponent<IGamesContainerProps> = ({ numberO
   }, []);
 
   return (
-    <Grid
-      xs={{ cols: 2 }}
-      md={{ cols: numberOfColumns || 3 }}
-      lg={{ cols: numberOfColumns || 4 }}
-      xl={{ cols: numberOfColumns || 4 }}
-      xxl={{ cols: numberOfColumns || 4 }}
-      gapX={'10px'}
-      gapY={'10px'}
-    >
-      {games.map((game) => (
-        <GridItem key={game.id}>{game.name}</GridItem>
-      ))}
-    </Grid>
+    <PageLayout>
+      <GamesComponent games={games} />
+    </PageLayout>
   );
 };
 
