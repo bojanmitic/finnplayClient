@@ -1,0 +1,51 @@
+input[type='range'] {
+	overflow: hidden;
+	width: 100%;
+	-webkit-appearance: none;
+	background-color: #f2f2f2;
+}
+
+datalist {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: -24px;
+}
+
+.slider-tick {
+	display: flex;
+	background: #FDBC11;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	align-items: center;
+	justify-content: center;
+	z-index: 3;
+	cursor: pointer;
+}
+
+.slider {
+	-webkit-appearance: unset;
+	width: 100%;
+	height: 15px;
+	border-radius: 5px;
+	background: #FDBC11;
+	outline: none;
+	opacity: 0.7;
+	transition: opacity .2s;
+	position: relative;
+	background-size: 30px;
+}
+
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 25px;
+	height: 25px;
+	border: 0;
+	background-color: black;
+	cursor: pointer;
+	border-radius: 50%;
+	box-shadow: -800px 0 0 800px #FDBC11;
+	z-index: 10;
+}

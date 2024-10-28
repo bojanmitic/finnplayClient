@@ -9,7 +9,7 @@ interface IPageLayoutProps {
 
 const PageLayout: React.FunctionComponent<IPageLayoutProps> = ({ children }) => {
   const screenWidthLgOrSmaller = useMediaQuery(down('lg'));
-  return <div className={`${screenWidthLgOrSmaller ? 'page-layout-sm' : 'page-layout-lg'}`}>{children}</div>;
+  return <div className={`${screenWidthLgOrSmaller ? 'page-layout-sm' : 'page-layout-lg'} container`}>{children}</div>;
 };
 
 export default PageLayout;

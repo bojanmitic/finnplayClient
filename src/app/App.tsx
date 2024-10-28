@@ -32,7 +32,7 @@ function App() {
   }, [currentUser]);
 
   return (
-    <main>
+    <main className="main">
       <ErrorBoundary>
         <Suspense fallback={<Loader />}>
           <AppBar />
