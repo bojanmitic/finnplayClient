@@ -1,0 +1,24 @@
+.group {
+	text-align: left;
+}
+
+.group-title {
+	color: #808080;
+}
+
+.group-items {
+	padding: 10px;
+}
+
+.group-items-item {
+	background-color: transparent;
+	border: none;
+	padding: 5px 15px;
+	margin: 0px 5px 15px 0px;
+	border-radius: 5px;
+
+}
+
+.toggled {
+	background-color: #FDBC11;
+}
