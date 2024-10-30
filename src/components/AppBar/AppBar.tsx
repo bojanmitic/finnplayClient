@@ -4,6 +4,7 @@ import { useAppDispatch } from '../../app/store';
 import { logoutAction } from '../../slices/authSlice';
 import { useNavigate } from 'react-router-dom';
 import snackBar from '../../utils/snackBar';
+import { clearStore } from '../../app/rootReducer';
 
 const AppBar: React.FunctionComponent = () => {
   const dispatch = useAppDispatch();
@@ -12,6 +13,7 @@ const AppBar: React.FunctionComponent = () => {
   const logoutUser = useCallback(async () => {
     try {
       localStorage.removeItem('user');
+      dispatch(clearStore());
       await dispatch(logoutAction());
       navigate('/login');
       snackBar.success('Logout successful');

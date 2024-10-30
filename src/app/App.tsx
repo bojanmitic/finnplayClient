@@ -13,9 +13,9 @@ function App() {
   const dispatch = useAppDispatch();
 
   const currentUser = useTypedSelector(userSelect);
+  const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : null;
 
   useEffect(() => {
-    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : null;
     if (!user) {
       navigate('/login');
     }

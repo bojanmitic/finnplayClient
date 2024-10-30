@@ -43,6 +43,7 @@ const LoginComponent: FunctionComponent = () => {
           onChange={(ev) => setUserName(ev.target.value)}
           className="input-field"
           required
+          autoComplete="userName"
         />
         <span className="floating-label">User name</span>
       </div>
@@ -55,6 +56,7 @@ const LoginComponent: FunctionComponent = () => {
           onChange={(ev) => setPassword(ev.target.value)}
           className="input-field password-field"
           required
+          autoComplete="off"
         />
         <span className="floating-label">Password</span>
         <span className="password-icon" onClick={handleToggle}>

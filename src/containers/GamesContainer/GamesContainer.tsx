@@ -27,14 +27,17 @@ const GamesContainer: React.FunctionComponent = () => {
   const [sorted, setSorted] = useState<IGame[]>([]);
 
   const [filtered, setFiltered] = useState<IGame[]>(gamesByGroup);
-
   const [resetFilters, setResetFilters] = useState(false);
+
   const gamesAmount = sorted.length;
 
   const dispatch = useAppDispatch();
   const games = useTypedSelector(selectAllGames);
   const providers = useTypedSelector(selectAllProviders);
   const groups = useTypedSelector(selectAllGroups);
+
+  const allGroupsGames = groups.flatMap((group) => group.games);
+  const allPossibleGames = games.filter((game) => allGroupsGames.includes(Number(game.id)));
 
   const isMobile = useMediaQuery(down('xs'));
 
@@ -86,8 +89,8 @@ const GamesContainer: React.FunctionComponent = () => {
   }, []);
 
   useEffect(() => {
-    setGamesByProv(games);
-  }, [games]);
+    setGamesByProv(allPossibleGames);
+  }, [allPossibleGames.length]);
 
   useEffect(() => {
     //handle providers
@@ -95,7 +98,7 @@ const GamesContainer: React.FunctionComponent = () => {
       const filterByProvider = games.filter((game) => toggledProvidersIds.includes(game.provider));
       setGamesByProv(filterByProvider);
     } else if (toggledProvidersIds.length === 0) {
-      setGamesByProv(games);
+      setGamesByProv(allPossibleGames);
     }
   }, [toggledProvidersIds]);
 
@@ -133,7 +136,7 @@ const GamesContainer: React.FunctionComponent = () => {
   }, [filtered, sortValueObj]);
 
   useEffect(() => {
-    setGamesByProv(games);
+    setGamesByProv(allPossibleGames);
     setToggledProvidersIds([]);
     setToggledGroupsIds([]);
     setSearchValue('');
