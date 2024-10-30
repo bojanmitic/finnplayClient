@@ -2,5 +2,8 @@
 	flex-grow: 1;
 	flex-basis: 70%;
 	overflow: auto;
+}
 
+.games-component-mobile {
+	margin-top: 180px;
 }

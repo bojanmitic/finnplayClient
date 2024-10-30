@@ -1,12 +1,13 @@
-import * as React from 'react';
+import { useState } from 'react';
 import SearchInput from '../../components/Filters/SearchInput/SearchInput';
 import Grouping from '../../components/Filters/Grouping/Grouping';
 import { IProvider } from '../../ducks/providersDuck';
 import { IGroup } from '../../ducks/groupsDuck';
-import './FiltersContainer.css';
 import { Order } from '../../utils/sorting';
 import { IGame } from '../../ducks/gamesDuck';
 import SortingToggle from '../../components/Filters/SortingToggle/SortingToggle';
+import './FiltersContainer.css';
+import { HamburgerIcon } from './HanmurgerIcon';
 
 export interface ISortingObj {
   id: string;
@@ -48,6 +49,7 @@ interface IFiltersContainerProps {
   setToggledGroupsIds: React.Dispatch<React.SetStateAction<number[]>>;
   sortValueObj: ISortingObj | null;
   setSortValueObj: React.Dispatch<React.SetStateAction<ISortingObj | null>>;
+  isMobile: boolean;
 }
 
 const FiltersContainer: React.FunctionComponent<IFiltersContainerProps> = ({
@@ -62,34 +64,49 @@ const FiltersContainer: React.FunctionComponent<IFiltersContainerProps> = ({
   toggledGroupsIds,
   setToggledGroupsIds,
   sortValueObj,
-  setSortValueObj
+  setSortValueObj,
+  isMobile
 }) => {
+  const [isShowFilters, setIsShowFilters] = useState(false);
   return (
-    <div className="filters">
+    <div className={`${isMobile ? 'filters-mobile' : ''} filters`}>
       <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} />
-      <Grouping
-        toggled={toggledProvidersIds}
-        setToggled={setToggledProvidersIds}
-        numberOfCol={numberOfCol}
-        setNumberOfCol={setNumberOfCol}
-        items={providers}
-        title="Providers"
-      />
-      <Grouping
-        toggled={toggledGroupsIds}
-        setToggled={setToggledGroupsIds}
-        numberOfCol={numberOfCol}
-        setNumberOfCol={setNumberOfCol}
-        items={groups}
-        title="Game groups"
-      />
-      <SortingToggle
-        title="Sorting"
-        items={sortingItems}
-        setSortValueObj={setSortValueObj}
-        sortValueObj={sortValueObj}
-      />
-      <Grouping numberOfCol={numberOfCol} setNumberOfCol={setNumberOfCol} isWithSlider items={[]} title="Columns" />
+      {(isShowFilters || !isMobile) && (
+        <>
+          <Grouping
+            toggled={toggledProvidersIds}
+            setToggled={setToggledProvidersIds}
+            numberOfCol={numberOfCol}
+            setNumberOfCol={setNumberOfCol}
+            items={providers}
+            title="Providers"
+          />
+          <Grouping
+            toggled={toggledGroupsIds}
+            setToggled={setToggledGroupsIds}
+            numberOfCol={numberOfCol}
+            setNumberOfCol={setNumberOfCol}
+            items={groups}
+            title="Game groups"
+          />
+
+          <SortingToggle
+            title="Sorting"
+            items={sortingItems}
+            setSortValueObj={setSortValueObj}
+            sortValueObj={sortValueObj}
+          />
+        </>
+      )}
+      {!isMobile && (
+        <Grouping numberOfCol={numberOfCol} setNumberOfCol={setNumberOfCol} isWithSlider items={[]} title="Columns" />
+      )}
+      {isMobile && (
+        <button onClick={() => setIsShowFilters(!isShowFilters)} className="filters-button">
+          <HamburgerIcon />
+          <span style={{ marginLeft: '5px' }}>{isShowFilters ? 'Hide filters' : 'Show filters'}</span>
+        </button>
+      )}
     </div>
   );
 };

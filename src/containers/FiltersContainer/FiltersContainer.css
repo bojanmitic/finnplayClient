@@ -14,3 +14,22 @@
 	position: sticky;
 	top: 50px;
 }
+
+.filters-mobile {
+	position: absolute;
+	background-color: white;
+	width: -webkit-fill-available;
+	left: 0;
+	top: 65px;
+}
+
+.filters-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: blue;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 8px 12px;
+}

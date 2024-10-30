@@ -8,8 +8,10 @@ import GamesComponent from '../../components/GamesComponent/GamesComponent';
 import PageLayout from '../../components/Common/PageLayout/PageLayout';
 import FiltersContainer, { ISortingObj } from '../FiltersContainer/FiltersContaier';
 import Fuse, { FuseResult } from 'fuse.js';
-import './GamesContainer.css';
 import { getComparator, stableSort } from '../../utils/sorting';
+import useMediaQuery from '../../hooks/useMediaQuery';
+import { down } from '../../utils/brekpoints';
+import './GamesContainer.css';
 
 const GamesContainer: React.FunctionComponent = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -30,6 +32,8 @@ const GamesContainer: React.FunctionComponent = () => {
   const games = useTypedSelector(selectAllGames);
   const providers = useTypedSelector(selectAllProviders);
   const groups = useTypedSelector(selectAllGroups);
+
+  const isMobile = useMediaQuery(down('xs'));
 
   const options = {
     threshold: 0.2,
@@ -55,7 +59,7 @@ const GamesContainer: React.FunctionComponent = () => {
       try {
         await dispatch(providersActions.get());
       } catch (error) {
-        snackBar.error((error as string) || 'Something went wrong with fetching games');
+        snackBar.error((error as string) || 'Something went wrong with fetching providers');
       }
     };
 
@@ -63,7 +67,7 @@ const GamesContainer: React.FunctionComponent = () => {
       try {
         await dispatch(groupsActions.get());
       } catch (error) {
-        snackBar.error((error as string) || 'Something went wrong with fetching games');
+        snackBar.error((error as string) || 'Something went wrong with fetching groups');
       }
     };
 
@@ -128,7 +132,7 @@ const GamesContainer: React.FunctionComponent = () => {
   return (
     <PageLayout>
       <div className="games-container">
-        <GamesComponent numberOfColumns={Number(numberOfCol)} games={sorted} />
+        <GamesComponent isMobile={isMobile} numberOfColumns={Number(numberOfCol)} games={sorted} />
         <FiltersContainer
           groups={groups}
           providers={providers}
@@ -142,6 +146,7 @@ const GamesContainer: React.FunctionComponent = () => {
           setToggledGroupsIds={setToggledGroupsIds}
           sortValueObj={sortValueObj}
           setSortValueObj={setSortValueObj}
+          isMobile={isMobile}
         />
       </div>
     </PageLayout>
