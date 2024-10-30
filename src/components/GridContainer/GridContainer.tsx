@@ -20,7 +20,6 @@ export interface GridContainerProps {
 
 const GridContainer = styled.div<GridContainerProps>`
   display: grid;
-  height: 100%;
 
   // Fallback if no breakpoint-specific values have been set
   ${({ cols }) => cols && `grid-template-columns: repeat(${cols}, 1fr);`}

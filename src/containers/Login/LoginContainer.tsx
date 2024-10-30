@@ -12,7 +12,7 @@ const LoginContainer: FunctionComponent = () => {
   }, [navigate, user]);
 
   return (
-    <div className="container">
+    <div className="login-container">
       <LoginComponent />
     </div>
   );

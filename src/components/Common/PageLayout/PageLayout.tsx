@@ -1,7 +1,7 @@
 import * as React from 'react';
-import './PageLayout.css';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { down } from '../../../utils/brekpoints';
+import './PageLayout.css';
 
 interface IPageLayoutProps {
   children: React.ReactNode;

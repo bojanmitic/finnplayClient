@@ -1,11 +1,11 @@
 import { FunctionComponent, useState } from 'react';
-import './LoginComponent.css';
 import { EyeOpenIcon, EyeClosedIcon } from './EyeIcon';
 import Button from '../Button/Button';
 import { useAppDispatch } from '../../app/store';
 import { loginAction } from '../../slices/authSlice';
 import { useNavigate } from 'react-router-dom';
 import snackBar from '../../utils/snackBar';
+import './LoginComponent.css';
 
 const LoginComponent: FunctionComponent = () => {
   const [userName, setUserName] = useState('');
@@ -29,7 +29,7 @@ const LoginComponent: FunctionComponent = () => {
       localStorage.setItem('user', JSON.stringify(res));
       navigate('/games');
     } catch (error) {
-      snackBar.error('Something went wrong with login');
+      snackBar.error((error as string) || 'Something went wrong with login');
     }
   };
 
@@ -67,6 +67,7 @@ const LoginComponent: FunctionComponent = () => {
         loading={false}
         text="Login"
         moreStyles={{ background: '#FDBC11', height: '50px', color: 'black', fontWeight: '500' }}
+        disabled={!userName || !password}
       />
     </div>
   );

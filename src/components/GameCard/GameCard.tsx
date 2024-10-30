@@ -8,8 +8,8 @@ interface IGameCardProps {
 
 const GameCard: React.FunctionComponent<IGameCardProps> = ({ src, alt }) => {
   return (
-    <div>
-      <img className="image-card" src={src} alt={alt} />
+    <div className="image-card">
+      <img className="image-card-img" src={src} alt={alt} />
     </div>
   );
 };

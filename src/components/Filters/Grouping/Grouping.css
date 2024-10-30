@@ -1,3 +1,7 @@
+.group {
+	text-align: left;
+}
+
 .group-title {
 	color: #808080;
 }
@@ -10,5 +14,11 @@
 	background-color: transparent;
 	border: none;
 	padding: 5px 15px;
-	margin-bottom: 15px;;
+	margin: 0px 5px 15px 0px;
+	border-radius: 5px;
+
+}
+
+.toggled {
+	background-color: #FDBC11;
 }

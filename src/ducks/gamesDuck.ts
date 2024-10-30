@@ -7,7 +7,7 @@ export interface IGame {
   provider: number;
   cover: string;
   coverLarge: string;
-  data: Date;
+  date: Date;
 }
 
 const { reducer, adapter, actions } = createRestDuck<IGame, unknown>('games');

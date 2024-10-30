@@ -22,7 +22,7 @@ const GamesComponent: React.FunctionComponent<IGamesComponentProps> = ({ games, 
         gapX={'10px'}
         gapY={'10px'}
       >
-        {games.map((game) => (
+        {games?.map((game) => (
           <GridItem key={game.id}>
             <GameCard src={game.cover} alt={game.name} />
           </GridItem>

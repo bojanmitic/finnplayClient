@@ -9,3 +9,7 @@
   outline: none;
 	width: 100%
 }
+
+.btn:disabled {
+	background-color: #f2f2f2 !important;
+}

@@ -24,7 +24,7 @@ function App() {
     }
     if (user && location.pathname !== '/login') {
       currentUser === null && dispatch(setUser(user));
-      navigate('games');
+      navigate('/games');
     } else if (user && location.pathname === '/login') {
       dispatch(setUser(user));
       navigate('/games');
