@@ -28,6 +28,9 @@ const GamesContainer: React.FunctionComponent = () => {
 
   const [filtered, setFiltered] = useState<IGame[]>(gamesByGroup);
 
+  const [resetFilters, setResetFilters] = useState(false);
+  const gamesAmount = sorted.length;
+
   const dispatch = useAppDispatch();
   const games = useTypedSelector(selectAllGames);
   const providers = useTypedSelector(selectAllProviders);
@@ -129,6 +132,14 @@ const GamesContainer: React.FunctionComponent = () => {
     }
   }, [filtered, sortValueObj]);
 
+  useEffect(() => {
+    setGamesByProv(games);
+    setToggledProvidersIds([]);
+    setToggledGroupsIds([]);
+    setSearchValue('');
+    setSortValueObj(null);
+  }, [resetFilters]);
+
   return (
     <PageLayout>
       <div className="games-container">
@@ -147,6 +158,8 @@ const GamesContainer: React.FunctionComponent = () => {
           sortValueObj={sortValueObj}
           setSortValueObj={setSortValueObj}
           isMobile={isMobile}
+          setResetFilters={setResetFilters}
+          gamesAmount={gamesAmount}
         />
       </div>
     </PageLayout>

@@ -1,0 +1,33 @@
+.reset-filters {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+.reset-filters-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 8px 18px;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+	border-radius: 5px;
+	color: #808080;
+}
+
+.reset-filters-button:hover {
+	color: #2b2b2b;
+}
+
+.reset-filters-button:active {
+	color: #2b2b2b;
+}
+
+
+
+.reset-filters-amount {
+	color: #808080;
+}
