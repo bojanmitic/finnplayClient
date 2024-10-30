@@ -25,7 +25,7 @@ const GamesComponent: React.FunctionComponent<IGamesComponentProps> = ({ games, 
       >
         {games?.map((game) => (
           <GridItem key={game.id}>
-            <GameCard src={game.cover} alt={game.name} />
+            <GameCard coverLarge={game.coverLarge} cover={game.cover} alt={game.name} />
           </GridItem>
         ))}
       </Grid>

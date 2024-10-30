@@ -8,6 +8,7 @@ import { IGame } from '../../ducks/gamesDuck';
 import SortingToggle from '../../components/Filters/SortingToggle/SortingToggle';
 import './FiltersContainer.css';
 import { HamburgerIcon } from './HanmurgerIcon';
+import ResetFilters from '../../components/Filters/ResetFilters/ResetFilters';
 
 export interface ISortingObj {
   id: string;
@@ -50,6 +51,8 @@ interface IFiltersContainerProps {
   sortValueObj: ISortingObj | null;
   setSortValueObj: React.Dispatch<React.SetStateAction<ISortingObj | null>>;
   isMobile: boolean;
+  setResetFilters: React.Dispatch<React.SetStateAction<boolean>>;
+  gamesAmount: number;
 }
 
 const FiltersContainer: React.FunctionComponent<IFiltersContainerProps> = ({
@@ -65,7 +68,9 @@ const FiltersContainer: React.FunctionComponent<IFiltersContainerProps> = ({
   setToggledGroupsIds,
   sortValueObj,
   setSortValueObj,
-  isMobile
+  isMobile,
+  setResetFilters,
+  gamesAmount
 }) => {
   const [isShowFilters, setIsShowFilters] = useState(false);
   return (
@@ -96,6 +101,7 @@ const FiltersContainer: React.FunctionComponent<IFiltersContainerProps> = ({
             setSortValueObj={setSortValueObj}
             sortValueObj={sortValueObj}
           />
+          <ResetFilters gamesAmount={gamesAmount} setResetFilters={setResetFilters} />
         </>
       )}
       {!isMobile && (
